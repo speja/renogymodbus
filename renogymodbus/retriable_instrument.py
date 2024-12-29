@@ -3,7 +3,7 @@ from retrying import retry
 
 class RetriableInstrument(minimalmodbus.Instrument):
     def __init__(self, port, slaveaddress):
-        super().__init__(port, slaveaddress)
+        super().__init__(port, slaveaddress, debug=False)
 
     @retry(wait_fixed=200, stop_max_attempt_number=5)
     def retriable_read_register(
@@ -32,3 +32,10 @@ class RetriableInstrument(minimalmodbus.Instrument):
     @retry(wait_fixed=200, stop_max_attempt_number=5)
     def retriable_read_bit(self, registeraddress, functioncode):
         return self.read_bit(registeraddress, functioncode)
+
+    @retry(wait_fixed=200, stop_max_attempt_number=5)
+    def retriable_read_string(self, registeraddress, number_of_registers,
+                              functioncode=3):
+        return self.read_string(registeraddress, number_of_registers,
+                                functioncode)
+    

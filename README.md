@@ -78,23 +78,33 @@ renogymodbus --device charge_controller --portname /dev/ttyUSB0 --slaveaddress 1
 renogymodbus --find-slave-address --portname /dev/ttyUSB0
 ```
 
-Example output for charge controller
+Example output for charge controller (ML2420 in this case).
+Run from git sandbox.
 ```sh
-Real Time Charge Controller Data
-Solar voltage: 43.1V
-Solar current: 0.09A
-Solar power: 4W
-Load voltage: 0.0V
-Load current: 0.0A
-Load power: 0W
-Battery voltage: 13.9V
-Battery state of charge: 100%
-Battery temperature: -37°C
-Controller temperature: 48°C
-Maximum solar power today: 51W
-Minimum solar power today: 0W
-Maximum battery voltage today: 14.0V
-Minimum battery voltage today: 13.1V
+renogymodbus$ python3 -m renogymodbus.command_line
+Real Time Charge Controller Data : ML2420
+Controller SW version: V4.4.2
+Controller HW version: V0.0.3
+Controller serial number: #3 date code 0-3
+Controller temperature: 26 °C
+Solar voltage: 26.0 V
+Solar current: 0.46 A
+Solar power  : 12 W
+Solar power today, max: 18 W
+Solar power today, min: 0 W
+Load voltage: 0.0 V
+Load current: 0.0 A
+Load power  : 0 W
+Battery voltage: 13.8 V
+Battery voltage today, max: 14.4 V
+Battery voltage today, min: 13.0 V
+Battery state of charge: 100 %
+Battery temperature: 25 °C
+Maximum charging current today : 1.37 A
+Charging today : 12 Ah
+Battery max discharge current: 0.0 A
+Battery max discharge power: 0 A
+Discharging today : 0 Ah
 ```
 
 Example output for smart battery
@@ -141,3 +151,7 @@ battery = RenogySmartBattery("/dev/ttyUSB0", 48)
 battery.get_voltage()
 ```
 See https://github.com/rosswarren/renogymodbus/blob/main/renogymodbus/smart_battery.py for all available methods
+
+# On Rover Modbus registers
+
+See https://www.going-flying.com/blog/files/141/ROVER_MODBUS.pdf

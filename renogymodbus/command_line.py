@@ -37,22 +37,34 @@ def main():
 def print_charge_controller_output(args):
     controller = RenogyChargeController(args.portname, args.slaveaddress)
 
-    print("Real Time Charge Controller Data")
-    print(f"Solar voltage: {controller.get_solar_voltage()}V")
-    print(f"Solar current: {controller.get_solar_current()}A")
-    print(f"Solar power: {controller.get_solar_power()}W")
-    print(f"Load voltage: {controller.get_load_voltage()}V")
-    print(f"Load current: {controller.get_load_current()}A")
-    print(f"Load power: {controller.get_load_power()}W")
-    print(f"Battery voltage: {controller.get_battery_voltage()}V")
-    print(f"Battery state of charge: {controller.get_battery_state_of_charge()}%")
-    print(f"Battery temperature: {controller.get_battery_temperature()}°C")
-    print(f"Controller temperature: {controller.get_controller_temperature()}°C")
-    print(f"Maximum solar power today: { controller.get_maximum_solar_power_today()}W")
-    print(f"Minimum solar power today: { controller.get_minimum_solar_power_today()}W")
-    print(f"Maximum battery voltage today: { controller.get_maximum_battery_voltage_today()}V")
-    print(f"Minimum battery voltage today: { controller.get_minimum_battery_voltage_today()}V")
+    print(f"Real Time Charge Controller Data : {controller.controller_model}")
+    print(f"Controller SW version: {controller.controller_software}")
+    print(f"Controller HW version: {controller.controller_hardware}")
+    print(f"Controller serial number: {controller.controller_serial}")
+    print(f"Controller temperature: {controller.controller_temperature} °C")
 
+    print(f"Solar voltage: {controller.solar_voltage} V")
+    print(f"Solar current: {controller.solar_current} A")
+    print(f"Solar power  : {controller.solar_power} W")
+    print(f"Solar power today, max: {controller.maximum_solar_power_today} W")
+    print(f"Solar power today, min: {controller.minimum_solar_power_today} W")
+    
+    print(f"Load voltage: {controller.load_voltage} V")
+    print(f"Load current: {controller.load_current} A")
+    print(f"Load power  : {controller.load_power} W")
+    
+    print(f"Battery voltage: {controller.battery_voltage} V")
+    print(f"Battery voltage today, max: { controller.maximum_battery_voltage_today} V")
+    print(f"Battery voltage today, min: { controller.minimum_battery_voltage_today} V")
+    print(f"Battery state of charge: {controller.battery_state_of_charge} %")
+    print(f"Battery temperature: {controller.battery_temperature} °C")
+    print(f"Maximum charging current today : { controller.max_charging_current} A")
+    print(f"Charging today : {controller.charging} Ah")
+    print(f"Battery max discharge current: {controller.max_discharging_current} A")
+    print(f"Battery max discharge power: {controller.max_discharging_power} A")
+    print(f"Discharging today : {controller.discharging} Ah")
+    
+    
 def print_smart_battery_output(args):
     battery = RenogySmartBattery(args.portname, args.slaveaddress)
 

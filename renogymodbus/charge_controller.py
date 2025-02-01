@@ -128,6 +128,15 @@ class RenogyChargeController(RetriableInstrument):
         return self.get_controller_temperature()
 
     @property
+    def controller_charging_state(self):
+        """Controller charging state:
+        0 - chargin disabled
+        1 - 
+        """
+        cs = self.retriable_read_register(0x0120, 0, 3, False)
+        return cs%256
+    
+    @property
     def controller_model(self):
         """Read product model"""
         return self.retriable_read_string(0x000C, 8, 3).strip()

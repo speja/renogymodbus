@@ -3,6 +3,9 @@ import serial
 
 from renogymodbus.retriable_instrument import RetriableInstrument
 
+# Sources of information
+# https://github.com/sophienyaa/NodeRenogy
+
 
 class RenogyChargeController(RetriableInstrument):
     """Instrument class for Renogy Charge Controllers.

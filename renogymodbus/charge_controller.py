@@ -5,6 +5,7 @@ from renogymodbus.retriable_instrument import RetriableInstrument
 
 # Sources of information
 # https://github.com/sophienyaa/NodeRenogy
+# https://github.com/MaffooClock/SerialRenogy
 
 
 class RenogyChargeController(RetriableInstrument):
